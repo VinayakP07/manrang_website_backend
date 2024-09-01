@@ -1,0 +1,16 @@
+{
+  "name": "manrang_website_backend",
+  "version": "1.0.0",
+  "description": "Backend part for the manrang website which will help the user to see the clothes, add to cart and buy them directly from the shop with no interference of third parties.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "nodemon": "^3.1.4"
+  }
+}
