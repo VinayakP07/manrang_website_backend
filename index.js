@@ -11,7 +11,7 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
-// app.use('/auth/user', require('./Routes/authUser.js'));
+app.use('/auth/user', require('./Routes/authUser.js'));
 app.use('/auth/admin', require('./Routes/authAdmin.js'));
 // app.use('/auth/superAdmin', require('./Routes/authSuperAdmin.js'));
 
