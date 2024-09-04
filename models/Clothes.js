@@ -14,10 +14,6 @@ const clothesSchema = new Schema({
         type : Number,
         required : true
     },
-    phone : {
-        type : String,
-        required : true
-    },
     images : {
         type : [String],
         required : true

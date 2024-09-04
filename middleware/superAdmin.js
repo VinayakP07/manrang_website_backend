@@ -15,7 +15,7 @@ const fetchSuperAdmin = (req, res, next) =>{
         next();
     } catch (e) {
         // console.log(e);
-        res.status(400).json({error : "Enter valid token"});
+        return res.status(400).json({error : "Enter valid token"});
     }
 }
 
