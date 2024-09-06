@@ -2,16 +2,22 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const complainSchema = new Schema({
-    subject : {
-        type : String,
-        toBeRequired : true
-    }, 
-    description : {
-        type : String,
-        required : true
+    subject: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+        required: true
     }
-  });
+});
+complainSchema.index({ userId: 1 });
 
-  const complain = mongoose.model('Complain',complainSchema);
-  complain.createIndexes();
-  module.exports = complain;
+const Complain = mongoose.model('Complain', complainSchema);
+
+module.exports = Complain;
