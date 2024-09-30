@@ -5,20 +5,25 @@ const addressSchema = new Schema({
     houseno : {
         type : String,
         toBeRequired : true
-    }, 
+    },
+    userId: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+        required: true
+    },
     street : {
         type : String,
         required : true
     },
     landmark : {
         type : String,
-    },
+    }, 
     city : {
         type : String,
         required : true
     },
     state : {
-        type : Number,
+        type : String,
         required : true
     },
     pincode : {
