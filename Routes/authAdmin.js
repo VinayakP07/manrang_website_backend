@@ -113,4 +113,18 @@ router.post('/createAdmin',[
         }
     });
 
+      // Route : 2 : Deleting the Admin
+ router.delete('/deleteAdmin/:id' ,async (req, res) => {
+    try {
+        let admin = await User.findById(req.params.id);
+        if (!admin) {
+            return res.status(404).json({ error: "Admin not found" });
+        }
+        await User.findByIdAndDelete(req.params.id);
+        res.json({ message: "Admin deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ error: "Some Error Occurred" });
+    }
+});
+
 module.exports = router;
