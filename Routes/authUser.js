@@ -113,4 +113,19 @@ router.post('/createUser',[
         }
     });
 
+
+    // Route : 2 : Deleting the User
+ router.delete('/deleteUser/:id',async (req, res) => {
+    try {
+        let user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        await User.findByIdAndDelete(req.params.id);
+        res.json({ message: "User deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ error: "Some Error Occurred" });
+    }
+});
+
 module.exports = router;
