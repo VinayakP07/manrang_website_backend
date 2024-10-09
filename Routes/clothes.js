@@ -130,6 +130,40 @@ router.put(
             res.status(500).json({ error: "Some error occurred" });
         }
     });
+
     
+    // Route 5: Fetch clothes with topBuys = true
+    router.get('/fetchTopBuys', async (req, res) => {
+        try {
+           const topBuysClothes = await Clothes.find({ topBuys: true });
+           res.status(200).json(topBuysClothes);
+        } catch (error) {
+           console.error(error.message);
+           res.status(500).json({ error: "Some error occurred" });
+        }
+    });
+
+    // Route 6: Fetch clothes with ourRecommendation = true
+    router.get('/fetchOurRecommendations', async (req, res) => {
+        try {
+           const recommendedClothes = await Clothes.find({ ourRecommendation: true });
+           res.status(200).json(recommendedClothes);
+        } catch (error) {
+           console.error(error.message);
+          res.status(500).json({ error: "Some error occurred" });
+        }
+    });
+    
+    // Route 7: Fetch clothes with newArrivals = true
+    router.get('/fetchNewArrivals', async (req, res) => {
+        try {
+           const newArrivalsClothes = await Clothes.find({ newArrivals: true });
+           res.status(200).json(newArrivalsClothes);
+        } catch (error) {
+           console.error(error.message);
+          res.status(500).json({ error: "Some error occurred" });
+        }
+    });
+
 
 module.exports = router;
