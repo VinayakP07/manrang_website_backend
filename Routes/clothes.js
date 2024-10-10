@@ -15,6 +15,7 @@ const shhh = process.env.JWT_SECRET;
 router.post('/addClothes',[
     body('section','Enter valid Section'),
     body('name','Enter valid name'),
+    body('description','Enter valid description'),
     body('price','Enter valid price'),
     body('images','Enter valid image url'),
     body('topBuys','Enter valid response'),
@@ -39,6 +40,7 @@ router.post('/addClothes',[
         let newCloth = await Clothes.create({
             section : req.body.section,
             name : req.body.name,
+            description : req.body.description,
             price : req.body.price,
             images : req.body.images,
             topBuys : req.body.topBuys,
@@ -49,7 +51,7 @@ router.post('/addClothes',[
         const saveCloth = await newCloth.save();
         res.status(200).json(saveCloth);
     } catch (error) {
-        res.status(400).json({ message: "Some Error Occured" });
+        res.status(400).json({error, message: "Some Error Occured" });
     }
 });
 
@@ -77,6 +79,7 @@ router.put(
     [
         body('section').optional().isString(),
         body('name').optional().isString(),
+        body('description').optional().isString(),
         body('price').optional().isNumeric(),
         body('images').optional().isArray(),
         body('topBuys').optional().isBoolean(),
@@ -91,10 +94,11 @@ router.put(
         }
 
         try {
-            const { section, name, price, images, topBuys, ourRecommendation, newArrivals, inStock } = req.body;
+            const { section, name, description,price, images, topBuys, ourRecommendation, newArrivals, inStock } = req.body;
             const updateCloth = {};
             if (section) updateCloth.section = section;
             if (name) updateCloth.name = name;
+            if (description) updateCloth.description = description;
             if (price) updateCloth.price = price;
             if (images) updateCloth.images = images;
             if (topBuys) updateCloth.topBuys = topBuys;
