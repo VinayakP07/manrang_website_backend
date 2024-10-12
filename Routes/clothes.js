@@ -10,7 +10,7 @@ const Admin = require('../middleware/adminInfo.js');
 const shhh = process.env.JWT_SECRET;
 
 // Route 1 : Adding clothes
-// Base link address = http://localhost:5000/superAdmin/clothes
+// Base link address = http://localhost:5000/clothes
 
 router.post('/addClothes',[
     body('section','Enter valid Section'),
