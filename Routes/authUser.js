@@ -9,9 +9,11 @@ const fetchUser = require('../middleware/userInfo');
 
 
 const shhh = process.env.JWT_SECRET;
+// Base link address = http://localhost:5000/auth/user 
+
+
 
 // Route 1 : Creating a User
-// Base link address = http://localhost:5000/auth/user
 
 router.post('/createUser',[
     body('email','Enter valid email').isEmail(),
@@ -101,7 +103,7 @@ router.post('/createUser',[
 
 
     // Route 3 : Fetching user details
-    router.post('/fetchUser', fetchUser ,async (req,res)=>{
+    router.get('/fetchUser', fetchUser ,async (req,res)=>{
         try {
             let userId = await req.user;
             const userInfo = await User.findById(userId).select('-password');
@@ -114,7 +116,7 @@ router.post('/createUser',[
     });
 
 
-    // Route : 2 : Deleting the User
+    // Route : 4 : Deleting the User
  router.delete('/deleteUser/:id',async (req, res) => {
     try {
         let user = await User.findById(req.params.id);
